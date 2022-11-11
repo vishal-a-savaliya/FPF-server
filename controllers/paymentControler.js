@@ -31,9 +31,11 @@ export const checkout = async (req, res) => {
         amount: Number(req.body.amount * 100),
         currency: "INR",
     };
+
     const order = await instance.orders.create(options);
 
     res.status(200).json({
+        // add razorpay_order_id, razorpay_payment_id, razorpay_signature to db
         success: true,
         order,
     });
